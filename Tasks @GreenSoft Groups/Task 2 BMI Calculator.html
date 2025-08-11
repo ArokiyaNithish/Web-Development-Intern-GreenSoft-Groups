@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1400&q=80');
+            background-position: center;
+            display: flex;
+            height:100;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .bmi-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+
+        table, td {
+            border: 1px solid #ccc;
+        }
+
+        
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="bmi-container">
+        <h2>BMI Calculator</h2>
+        <table>
+            <tr>
+                <td>Enter Weight (kg):</td>
+                <td><input type="number" id="weight"></td>
+            </tr>
+            <tr>
+                <td>Enter Height (cm):</td>
+                <td><input type="number" id="height"></td>
+            </tr>
+            <tr>
+                <td>Your BMI:</td>
+                <td><input type="text" id="bmi" readonly></td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td><input type="text" id="status" readonly></td>
+            </tr>
+        </table>
+        <input type="button" value="Calculate BMI" onclick="calculateBMI();" />
+    </div>
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value) / 100;
+
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                document.getElementById("bmi").value = "";
+                document.getElementById("status").value = "Invalid input!";
+                alert("Please enter valid numbers for weight and height.");
+                return;
+            }
+
+            var bmi = weight / (height * height);
+            document.getElementById("bmi").value = bmi.toFixed(2);
+
+            let category = "";
+            if (bmi < 18.5) category = "Underweight";
+            else if (bmi < 24.9) category = "Normal";
+            else if (bmi < 29.9) category = "Overweight";
+            else category = "Obese";
+            document.getElementById("status").value = category;
+        }
+    </script>
+</body>
+</html>

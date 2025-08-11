@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://img.freepik.com/premium-vector/memphis-style-geometric-shapes-set_604624-71.jpg');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .area-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        table, td {
+            border: 1px solid #ccc;
+        }
+
+        input[type="number"], input[readonly] {
+            width: 90%;
+            padding: 8px;
+            font-size: 15px;
+            margin-bottom: 10px; /* Adds vertical gap */
+        }
+
+        input[type="button"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #2980b9;
+        }
+
+        .radio-row label {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="area-container">
+        <h2>Area Calculator</h2>
+        <form>
+            <table>
+                <tr>
+                    <td>Select Shape:</td>
+                    <td class="radio-row">
+                        <label><input type="radio" name="shape" value="rectangle" onclick="showInputs()"> Rectangle</label>
+                        <label><input type="radio" name="shape" value="square" onclick="showInputs()"> Square</label>
+                        <label><input type="radio" name="shape" value="triangle" onclick="showInputs()"> Triangle</label>
+                        <label><input type="radio" name="shape" value="circle" onclick="showInputs()"> Circle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Dimensions:</td>
+                    <td id="inputFields" class="input-group"></td>
+                </tr>
+                <tr>
+                    <td>Area:</td>
+                    <td><input type="text" id="result" readonly></td>
+                </tr>
+            </table>
+            <input type="button" value="Calculate Area" onclick="calculateArea()">
+        </form>
+    </div>
+
+    <script>
+        function showInputs() {
+            const shape = document.querySelector('input[name="shape"]:checked').value;
+            const inputFields = document.getElementById("inputFields");
+
+            let html = "";
+            switch (shape) {
+                case "rectangle":
+                    html = `
+                        <input type="number" id="length" placeholder="Length">
+                        <input type="number" id="width" placeholder="Width">`;
+                    break;
+                case "square":
+                    html = `<input type="number" id="side" placeholder="Side">`;
+                    break;
+                case "triangle":
+                    html = `
+                        <input type="number" id="base" placeholder="Base">
+                        <input type="number" id="height" placeholder="Height">`;
+                    break;
+                case "circle":
+                    html = `<input type="number" id="radius" placeholder="Radius">`;
+                    break;
+                default:
+                    html = "";
+            }
+
+            inputFields.innerHTML = html;
+        }
+
+        function calculateArea() {
+            const shapeRadio = document.querySelector('input[name="shape"]:checked');
+            if (!shapeRadio) {
+                document.getElementById("result").value = "Please select a shape.";
+                alert("Please select a shape.");
+                return;
+            }
+
+            const shape = shapeRadio.value;
+            let area = 0;
+
+            switch (shape) {
+                case "rectangle":
+                    const length = parseFloat(document.getElementById("length").value);
+                    const width = parseFloat(document.getElementById("width").value);
+                    area = length * width;
+                    break;
+                case "square":
+                    const side = parseFloat(document.getElementById("side").value);
+                    area = side * side;
+                    break;
+                case "triangle":
+                    const base = parseFloat(document.getElementById("base").value);
+                    const height = parseFloat(document.getElementById("height").value);
+                    area = 0.5 * base * height;
+                    break;
+                case "circle":
+                    const radius = parseFloat(document.getElementById("radius").value);
+                    area = Math.PI * radius * radius;
+                    break;
+            }
+
+            if (isNaN(area)) {
+                document.getElementById("result").value = "Invalid input.";
+                alert("Invalid input");
+            } else {
+                document.getElementById("result").value = area.toFixed(2) + " sq units";
+            }
+        }
+    </script>
+</body>
+</html>

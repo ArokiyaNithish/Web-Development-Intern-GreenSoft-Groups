@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Interest Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/006/860/587/non_2x/financial-loan-concept-businessmen-stand-on-money-coin-loan-money-loan-officer-free-photo.JPG');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .si-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        table, td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="si-container">
+        <h2>Simple Interest Calculator</h2>
+        <table>
+            <tr>
+                <td>Principal (₹):</td>
+                <td><input type="number" id="principal"></td>
+            </tr>
+            <tr>
+                <td>Rate (% per annum):</td>
+                <td><input type="number" id="rate"></td>
+            </tr>
+            <tr>
+                <td>Time (years):</td>
+                <td><input type="number" id="time"></td>
+            </tr>
+            <tr>
+                <td>Simple Interest (₹):</td>
+                <td><input type="text" id="interest" readonly></td>
+            </tr>
+        </table>
+        <input type="button" value="Calculate Interest" onclick="calculateSI();" />
+    </div>
+
+    <script>
+        function calculateSI() {
+            var principal = parseFloat(document.getElementById("principal").value);
+            var rate = parseFloat(document.getElementById("rate").value);
+            var time = parseFloat(document.getElementById("time").value);
+
+            if (!principal || !rate || !time || principal <= 0 || rate <= 0 || time <= 0) {
+                document.getElementById("interest").value = "";
+                alert("Please enter valid positive numbers for all fields.");
+                return;
+            }
+
+            var si = (principal * rate * time) / 100;
+            document.getElementById("interest").value = si.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calculator-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .calculator-container h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    input[type="button"] {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="button"]:hover {
+      background-color: #2980b9;
+    }
+
+    #res {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator-container">
+    <h2>Calculator</h2>
+
+    <input type="text" id="fnum" placeholder="Enter first number"><br>
+    <input type="text" id="snum" placeholder="Enter second number"><br>
+
+    <input type="button" value="Add" onclick="calculate('+')">
+    <input type="button" value="Subtract" onclick="calculate('-')"><br>
+    <input type="button" value="Multiply" onclick="calculate('*')">
+    <input type="button" value="Divide" onclick="calculate('/')"><br>
+    <input type="button" value="Modulus" onclick="calculate('%')"><br><br>
+
+    <input type="text" id="res" placeholder="Result" readonly>
+  </div>
+
+  <script>
+    function calculate(operator) {
+      var jfnum = document.getElementById('fnum');
+      var jsnum = document.getElementById('snum');
+      var jres = document.getElementById('res');
+
+      var v1 = Number(jfnum.value);
+      var v2 = Number(jsnum.value);
+
+      if (isNaN(v1) || isNaN(v2)) {
+        alert("❌ Please enter valid numbers!");
+        jres.value = "";
+        return;
+      }
+
+      var result;
+
+      switch (operator) {
+        case '+':
+          result = v1 + v2;
+          break;
+        case '-':
+          result = v1 - v2;
+          break;
+        case '*':
+          result = v1 * v2;
+          break;
+        case '/':
+          if (v2 === 0) {
+            alert("❌ Cannot divide by zero!");
+            jres.value = "";
+            return;
+          }
+          result = v1 / v2;
+          break;
+        case '%':
+          if (v2 === 0) {
+            alert("❌ Cannot modulus by zero!");
+            jres.value = "";
+            return;
+          }
+          result = v1 % v2;
+          break;
+        default:
+          alert("❌ Invalid Operation!");
+          return;
+      }
+
+      jres.value = result;
+      alert("✅ Result is: " + result);
+    }
+  </script>
+</body>
+</html>

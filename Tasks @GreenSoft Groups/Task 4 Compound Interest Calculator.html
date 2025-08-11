@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compound Interest Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://thumbs.dreamstime.com/z/indian-rupees-currency-notes-verified-different-colors-texture-values-181073182.jpg');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .ci-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        table, td {
+            border: 1px solid #ccc;
+        }
+
+        input[type="number"], input[readonly] {
+            width: 100%;
+            padding: 6px;
+            font-size: 15px;
+        }
+
+        input[type="button"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="ci-container">
+        <h2>Compound Interest Calculator</h2>
+        <table>
+            <tr>
+                <td>Principal (₹):</td>
+                <td><input type="number" id="principal"></td>
+            </tr>
+            <tr>
+                <td>Annual Rate (%):</td>
+                <td><input type="number" id="rate"></td>
+            </tr>
+            <tr>
+                <td>Time (Years):</td>
+                <td><input type="number" id="time"></td>
+            </tr>
+            <tr>
+                <td>Final Amount (₹):</td>
+                <td><input type="text" id="amount" readonly></td>
+            </tr>
+            <tr>
+                <td>Compound Interest (₹):</td>
+                <td><input type="text" id="interest" readonly></td>
+            </tr>
+        </table>
+        <input type="button" value="Calculate Interest" onclick="calculateCI();" />
+    </div>
+
+    <script>
+        function calculateCI() {
+            let principal = parseFloat(document.getElementById("principal").value);
+            let rate = parseFloat(document.getElementById("rate").value);
+            let time = parseFloat(document.getElementById("time").value);
+
+            if (!principal || !rate || !time || principal <= 0 || rate <= 0 || time <= 0) {
+                alert("Please enter valid positive numbers for all fields.");
+                document.getElementById("amount").value = "";
+                document.getElementById("interest").value = "";
+                return;
+            }
+
+            let r = rate / 100;
+            let amount = principal * Math.pow((1 + r), time);
+            let interest = amount - principal;
+
+            document.getElementById("amount").value = amount.toFixed(2);
+            document.getElementById("interest").value = interest.toFixed(2);
+            document.getElementById("Calculation Successfull").value = interest.toFixed(2);
+        }
+    </script>
+</body>
+</html>

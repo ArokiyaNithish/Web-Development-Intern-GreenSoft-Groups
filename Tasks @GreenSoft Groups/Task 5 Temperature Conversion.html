@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.cdn.sofatutor.net/videos/pictures/27597/normal/27597_INTL_Temperature_Conversion_Thumbnail.jpg?1708417643');
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .temp-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        table, td {
+            border: 1px solid #ccc;
+        }
+
+        input[type="number"], input[readonly] {
+            width: 100%;
+            padding: 6px;
+            font-size: 15px;
+        }
+
+        input[type="radio"] {
+                    }
+
+        input[type="button"] {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="temp-container">
+        <h2>Temperature Converter</h2>
+        <table>
+            <tr>
+                <td>Enter Temperature:</td>
+                <td><input type="number" id="inputTemp"></td>
+            </tr>
+            <tr>
+                <td>Conversion:</td>
+                <td>
+                    <label><input type="radio" name="conversion" value="CtoF">Celsius to Fahrenheit</label><br>
+                    <label><input type="radio" name="conversion" value="FtoC">Fahrenheit to Celsius</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Converted Value:</td>
+                <td><input type="text" id="result" readonly></td>
+            </tr>
+        </table>
+        <input type="button" value="Convert" onclick="convertTemperature();" />
+    </div>
+
+    <script>
+        function convertTemperature() {
+            let temp = parseFloat(document.getElementById("inputTemp").value);
+            let conversionType = document.querySelector('input[name="conversion"]:checked');
+
+            if (isNaN(temp)) {
+                document.getElementById("result").value = "";
+                return;
+            }
+
+            if (!conversionType) {
+                document.getElementById("result").value = "Please select conversion type";
+                return;
+            }
+
+            let result;
+            if (conversionType.value === "CtoF") {
+                result = (temp * 9/5) + 32;
+                document.getElementById("result").value = result.toFixed(2) + " °F";
+            } else if (conversionType.value === "FtoC") {
+                result = (temp - 32) * 5/9;
+                document.getElementById("result").value = result.toFixed(2) + " °C";
+            }
+        }
+    </script>
+</body>
+</html>
