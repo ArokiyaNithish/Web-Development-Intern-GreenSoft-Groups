@@ -88,7 +88,7 @@ I would like to thank my mentors **Mr. Prem Nivaas A** (Frontend) and **Mr. Inba
 
 ## 💬 Feedback & Testimonials
 
-> "I had the pleasure of supervising Arokiya Nithish J during his three-month internship at Greensoft Groups, where he worked as a Full Stack Python Developer. From **July 14, 2025, to September 30, 2025**, Arokiya made significant contributions to our team while demonstrating his eagerness to learn and grow.
+> "I had the pleasure of supervising Arokiya Nithish J during his four-month internship at Greensoft Groups, where he worked as a Full Stack Python Developer. From **July 14, 2025, to September 30, 2025**, Arokiya made significant contributions to our team while demonstrating his eagerness to learn and grow.
 > 
 > Arokiya impressed me with his proficiency in **frontend development, particularly with HTML, CSS, and JavaScript**. He showcased his ability to design and build responsive, interactive web pages, contributing to various projects that enhanced our user experience. His commitment to quality and attention to detail were evident in the work he delivered.
 > 
