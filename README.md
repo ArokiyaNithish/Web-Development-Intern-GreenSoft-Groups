@@ -58,7 +58,6 @@ A robust web application designed to bridge the gap between patients and doctors
 - **Backend:** Python, Django, Django REST Framework.
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap.
 - **Database:** SQLite (with DB Browser for management).
-- **Visualization:** Chart.js.
 - **Tools:** Git, GitHub, VS Code.
 
 ---
