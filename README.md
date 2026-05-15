@@ -8,6 +8,7 @@
 - **Intern ID:** VTU24347  
 - **Department:** Artificial Intelligence and Data Science  
 - **Internship Focus:** Web Development Foundations  
+- **Internship Duration (Web Track):** July 14, 2025 – August 14, 2025  
 - **Organization:** GreenSoft Groups
 
 ---
@@ -38,6 +39,8 @@ This repository is organized as a **learning book** that documents:
 
 It serves as both a **portfolio** and a **revision handbook** for internship learning.
 
+> **Scope Note:** This repository currently contains the web development internship modules and task implementations.
+
 ---
 
 ## 🧭 Learning Journey at a Glance
@@ -49,6 +52,13 @@ The work follows a progressive path:
 3. **Improve page layout and readability**
 4. **Add JavaScript for interactivity and user feedback**
 5. **Build practical mini applications (calculator task series)**
+
+### Timeline Snapshot
+
+| Phase | Focus | Period |
+|------|------|------|
+| Learning Modules | HTML → CSS → JavaScript | July 14, 2025 – August 14, 2025 |
+| Task Implementation | Calculator mini-project series | July 14, 2025 – August 14, 2025 |
 
 ---
 
@@ -63,7 +73,7 @@ Web-Development-Intern-GreenSoft-Groups/
 │   ├── Task 4 HTML+CSS+JS.html
 │   ├── WebDevelopment.jpg
 │   ├── Task 1.jpg
-│   ├── Task 1..jpg
+│   ├── Task 1..jpg *(original filename in repository)*
 │   ├── background.jpg
 │   └── audio.mp3
 ├── Tasks @GreenSoft Groups/
